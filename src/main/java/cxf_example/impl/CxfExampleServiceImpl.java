@@ -21,17 +21,17 @@ import net.webservicex.*;
 public class CxfExampleServiceImpl implements CxfExampleService {
 
 	public String getSomething() {
-		StockQuoteSoap sqs = this.getInstance();
-	    String val = sqs.getQuote("AAPL");
+		GeoIPServiceSoap sqs = this.getInstance();
+	    GeoIP val = sqs.getGeoIP("198.39.100.21");
 		return "AAPL = " + val;
 	}
 
 	@Property(label = "Webservice URL", value = CxfExampleServiceImpl.DEFAULT_PORTURL)
 	private static final String PROPERTY_PORTURL = "portUrl";
-	private static final String DEFAULT_PORTURL = "http://www.webservicex.net/stockquote.asmx";
+	private static final String DEFAULT_PORTURL = "http://www.webservicex.net/geoipservice.asmx";
 
 	private String portUrl;
-	private StockQuoteSoap soapInstance;
+	private GeoIPServiceSoap soapInstance;
 
 	private static final Logger log = LoggerFactory
 			.getLogger(CxfExampleService.class);
@@ -49,7 +49,7 @@ public class CxfExampleServiceImpl implements CxfExampleService {
 			log.info("portUrl=" + portUrl);
 
 			// instantiate SOAP client proxy
-			soapInstance = JaxWsClientFactory.create(StockQuoteSoap.class,
+			soapInstance = JaxWsClientFactory.create(GeoIPServiceSoap.class,
 					portUrl);
 
 		} catch (RuntimeException ex) {
@@ -60,7 +60,7 @@ public class CxfExampleServiceImpl implements CxfExampleService {
 	/**
 	 * @return Greeter SOAP client proxy instance
 	 */
-	public StockQuoteSoap getInstance() {
+	public GeoIPServiceSoap getInstance() {
 		return soapInstance;
 	}
 

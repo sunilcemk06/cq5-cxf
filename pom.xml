@@ -207,7 +207,7 @@
 		          </execution> 
 		        </executions>
 		        <configuration>
-		        	<slingUrl>http://localhost:5503/system/console</slingUrl>
+		        	<slingUrl>http://localhost:4502/system/console</slingUrl>
 		        </configuration>
       		</plugin>
 		
